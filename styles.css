@@ -148,6 +148,13 @@ body {
     padding: var(--spacing-xl) var(--spacing-md);
 }
 
+.hero-logo {
+    width: 450px;
+    height: auto;
+    margin-bottom: var(--spacing-lg);
+    filter: brightness(1.1);
+}
+
 .glitch-text {
     font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 900;
@@ -206,7 +213,7 @@ body {
 
 /* === SERVICES SECTION === */
 .services {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-md) 0 var(--spacing-sm) 0;
     background-color: var(--dark-bg);
     position: relative;
 }
@@ -367,7 +374,7 @@ body {
 .footer {
     background-color: var(--darker-bg);
     border-top: 2px solid var(--card-bg);
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-sm) 0;
     text-align: center;
 }
 
@@ -382,21 +389,25 @@ body {
     .nav-links {
         gap: var(--spacing-sm);
     }
-    
+
     .nav-links a {
         font-size: 0.8rem;
     }
-    
+
     .services-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .logo-text {
         font-size: 0.9rem;
     }
-    
+
     .hero {
         min-height: 80vh;
+    }
+
+    .hero-logo {
+        width: 300px;
     }
 }
 
@@ -404,9 +415,13 @@ body {
     .logo-text {
         display: none;
     }
-    
+
     .nav-links a {
         font-size: 0.75rem;
+    }
+
+    .hero-logo {
+        width: 250px;
     }
 }
 
