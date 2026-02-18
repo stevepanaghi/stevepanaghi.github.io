@@ -47,7 +47,7 @@ body {
 .navbar {
     background-color: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
     position: fixed;
     width: 100%;
     top: 0;
@@ -214,7 +214,7 @@ body {
 .experience {
     padding: var(--spacing-lg) 0;
     background-color: var(--darker-bg);
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
     position: relative;
 }
 
@@ -239,7 +239,7 @@ body {
     padding: var(--spacing-md) 0 var(--spacing-sm) 0;
     background-color: var(--dark-bg);
     position: relative;
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
 }
 
 .section-title {
@@ -271,7 +271,7 @@ body {
 
 .service-card {
     background-color: var(--card-bg);
-    border: 2px solid #2a2a2a;
+    border: 2px solid #686868;
     padding: var(--spacing-md);
     transition: all 0.3s ease;
     position: relative;
@@ -352,7 +352,7 @@ body {
 .how-we-help {
     padding: var(--spacing-lg) 0;
     background-color: var(--dark-bg);
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
 }
 
 .help-intro {
@@ -375,7 +375,7 @@ body {
 
 .help-list li {
     background-color: var(--card-bg);
-    border: 2px solid #2a2a2a;
+    border: 2px solid #686868;
     padding: var(--spacing-sm);
     color: var(--text-primary);
     font-size: 1.05rem;
@@ -416,7 +416,7 @@ body {
 .technologies {
     padding: var(--spacing-lg) 0;
     background-color: var(--card-bg);
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
 }
 
 .tech-intro {
@@ -443,7 +443,7 @@ body {
 
 .tech-category {
     background-color: var(--dark-bg);
-    border: 2px solid #2a2a2a;
+    border: 2px solid #686868;
     padding: var(--spacing-sm);
     text-align: center;
     transition: all 0.3s ease;
@@ -482,7 +482,7 @@ body {
 .how-we-work {
     padding: var(--spacing-xl) 0;
     background-color: var(--dark-bg);
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
 }
 
 .work-grid {
@@ -494,7 +494,7 @@ body {
 
 .work-item {
     background-color: var(--card-bg);
-    border: 2px solid #2a2a2a;
+    border: 2px solid #686868;
     padding: var(--spacing-sm);
     transition: all 0.3s ease;
     text-align: center;
@@ -524,7 +524,7 @@ body {
 .client-showcase {
     padding: var(--spacing-lg) 0;
     background-color: var(--card-bg);
-    border-bottom: 2px solid #2a2a2a;
+    border-bottom: 2px solid #686868;
 }
 
 .showcase-intro {
@@ -545,7 +545,7 @@ body {
 
 .showcase-card {
     background-color: var(--dark-bg);
-    border: 2px solid #2a2a2a;
+    border: 2px solid #686868;
     padding: var(--spacing-md);
     transition: all 0.3s ease;
     display: flex;
@@ -561,7 +561,7 @@ body {
 
 .client-logo {
     background-color: var(--card-bg);
-    border: 2px solid #2a2a2a;
+    border: 2px solid #686868;
     padding: var(--spacing-sm);
     text-align: center;
     color: var(--metal-gray);
@@ -701,7 +701,7 @@ body {
 /* === FOOTER === */
 .footer {
     background-color: var(--darker-bg);
-    border-top: 2px solid #2a2a2a;
+    border-top: 2px solid #686868;
     padding: var(--spacing-sm) 0;
     text-align: center;
 }
@@ -796,8 +796,99 @@ html {
     scroll-behavior: smooth;
 }
 
+/* === SKIP LINK === */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: var(--spacing-sm);
+    background-color: var(--accent-orange);
+    color: var(--darker-bg);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-weight: 700;
+    text-decoration: none;
+    z-index: 10000;
+    font-size: 0.95rem;
+}
+
+.skip-link:focus {
+    top: var(--spacing-xs);
+}
+
+/* === FOCUS INDICATORS === */
+*:focus-visible {
+    outline: 3px solid var(--accent-orange);
+    outline-offset: 2px;
+}
+
+.nav-links a:focus-visible {
+    outline-offset: 4px;
+}
+
+.cta-button:focus-visible {
+    outline-offset: 4px;
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.4);
+}
+
+.email-link:focus-visible {
+    outline-offset: 4px;
+    border-color: var(--accent-orange);
+}
+
+/* === SERVICE CARD ANIMATION (JS-DEPENDENT) === */
+.js-loaded .service-card {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.js-loaded .service-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === DEFINITION LIST RESET === */
+dl.result-item {
+    margin: 0;
+    padding: 0;
+}
+
+dl.result-item dt,
+dl.result-item dd {
+    margin: 0;
+    margin-inline-start: 0;
+    padding: 0;
+}
+
 /* === SELECTION === */
 ::selection {
     background-color: var(--accent-orange);
     color: var(--darker-bg);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .service-card:hover,
+    .showcase-card:hover,
+    .tech-category:hover,
+    .help-list li:hover,
+    .email-link:hover,
+    .cta-button:hover {
+        transform: none;
+    }
+
+    .js-loaded .service-card {
+        opacity: 1;
+        transform: none;
+    }
 }
