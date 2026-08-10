@@ -1,3 +1,24 @@
+// Mobile nav toggle
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.classList.toggle('is-active');
+        navToggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('is-open');
+            navToggle.classList.remove('is-active');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+
 // Smooth scroll behavior for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -92,3 +113,15 @@ if (emailLink) {
         }, 100);
     });
 }
+
+// Show more / show less toggle for project experience groups
+document.querySelectorAll('.show-more-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const targetGroup = button.getAttribute('data-target');
+        const group = document.querySelector(`.project-group[data-group="${targetGroup}"]`);
+        if (group) {
+            const isExpanded = group.classList.toggle('is-expanded');
+            button.textContent = isExpanded ? 'Show less' : 'Show more';
+        }
+    });
+});

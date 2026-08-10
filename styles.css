@@ -116,6 +116,40 @@ body {
     width: 100%;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-orange);
+    transition: all 0.3s ease;
+}
+
+.nav-toggle.is-active .nav-toggle-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.is-active .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.is-active .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* === HERO SECTION === */
 .hero {
     min-height: 100vh;
@@ -327,14 +361,20 @@ body {
 
 .service-card p {
     color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0;
     line-height: 1.8;
+}
+
+.service-card-header {
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-features {
     list-style: none;
-    margin-top: auto;
-    padding-top: var(--spacing-md);
+    margin-top: 0;
+    padding-top: var(--spacing-sm);
 }
 
 .service-features li {
@@ -352,8 +392,8 @@ body {
     font-weight: bold;
 }
 
-/* === HOW WE RUN PROJECTS SECTION === */
-.how-we-run-projects {
+/* === HOW WE WORK SECTION === */
+.how-we-work {
     padding: var(--spacing-lg) 0;
     background-color: var(--card-bg);
     border-bottom: 2px solid #686868;
@@ -400,8 +440,116 @@ body {
     transform: translateX(5px);
 }
 
-/* === WHO WE WORK WITH SECTION === */
-.who-we-work-with {
+.process-label {
+    font-size: 1rem;
+    color: var(--metal-gray);
+    text-align: center;
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.process-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--dark-bg);
+    border: 2px solid #686868;
+    padding: var(--spacing-sm);
+    transition: all 0.3s ease;
+}
+
+.process-step-title {
+    font-weight: 700;
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+    line-height: 1.2;
+}
+
+.process-step-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-top: var(--spacing-xs);
+}
+
+.process-arrow {
+    color: var(--accent-orange);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.process-circular {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    display: block;
+}
+
+.process-circular .process-step {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    margin-top: -80px;
+    margin-left: -80px;
+    transform: rotate(calc(var(--i) * 90deg)) translateY(-180px) rotate(calc(var(--i) * -90deg));
+}
+
+.process-circular-alt {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    display: block;
+}
+
+.process-circular-alt .process-step {
+    position: absolute;
+    width: 160px;
+    height: 100px;
+    border-radius: 9999px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -80px;
+    transform: rotate(calc(var(--i) * 90deg)) translateY(-180px) rotate(calc(var(--i) * -90deg));
+}
+
+.process-horizontal {
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.process-horizontal .process-step {
+    width: 180px;
+    min-height: 110px;
+    border-radius: 8px;
+}
+
+.process-horizontal .process-arrow {
+    transform: rotate(0deg);
+    font-size: 1.5rem;
+}
+
+/* === WHO WE SERVE SECTION === */
+.who-we-serve {
     padding: var(--spacing-lg) 0;
     background-color: var(--dark-bg);
     border-bottom: 2px solid #686868;
@@ -432,6 +580,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 .who-card::before {
@@ -536,6 +685,43 @@ body {
     max-width: 600px;
     margin: var(--spacing-lg) auto 0;
     font-weight: 600;
+}
+
+.subsection-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--light-metal);
+    text-align: center;
+    margin: var(--spacing-lg) 0 var(--spacing-md);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.project-group .showcase-card:nth-child(n+3) {
+    display: none;
+}
+
+.project-group.is-expanded .showcase-card:nth-child(n+3) {
+    display: flex;
+}
+
+.show-more-button {
+    display: block;
+    margin: var(--spacing-md) auto var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: transparent;
+    border: 2px solid var(--accent-orange);
+    color: var(--accent-orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.show-more-button:hover {
+    background-color: var(--accent-orange);
+    color: var(--darker-bg);
 }
 
 /* === TECHNOLOGIES SECTION === */
@@ -917,8 +1103,51 @@ body {
         font-size: 0.8rem;
     }
 
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: rgba(10, 10, 10, 0.98);
+        border-bottom: 2px solid #686868;
+        padding: var(--spacing-md);
+        gap: var(--spacing-md);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-links.is-open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        text-align: center;
+        padding: var(--spacing-xs) 0;
+    }
+
+    .nav-links a::after {
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .services-grid {
         grid-template-columns: 1fr;
+    }
+
+    .service-card-header {
+        min-height: auto;
     }
 
     .logo-text {
@@ -1010,6 +1239,16 @@ body {
         display: block;
         width: 100%;
         flex: none;
+    }
+
+    /* Process flow stacks vertically on small screens */
+    .process-horizontal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .process-horizontal .process-arrow {
+        transform: rotate(90deg);
     }
 }
 
